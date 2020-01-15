@@ -125,9 +125,10 @@ module.exports = function(opts) {
     }
 
     conf.db = conf.db || conf.name
+    var options = conf.options || {}
 
     // Connect using the URI
-    MongoClient.connect(conf.uri, function(err, client) {
+    MongoClient.connect(conf.uri, options, function(err, client) {
       if (err) {
         return seneca.die('connect', err, conf)
       }
